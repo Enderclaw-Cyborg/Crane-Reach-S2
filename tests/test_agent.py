@@ -41,3 +41,33 @@ def test_three_step_headless_episode_runs():
     finally:
         env.close()
     assert isinstance(score, float)
+
+
+def test_agent_prefers_lower_cost_terrain_on_equal_distance():
+    from agent import Agent
+
+    grid = [[{"terrain": "grass", "feature": "none"} for _ in range(6)] for _ in range(6)]
+    grid[1][3] = {"terrain": "marsh", "feature": "none"}
+    grid[2][3] = {"terrain": "grass", "feature": "none"}
+    observation = {
+        "observation": {
+            "self": {
+                "unit_id": "red_footman_0",
+                "type": "footman",
+                "position": {"q": 2, "r": 2},
+                "hit_points": 12,
+                "movement_points": 2,
+                "direction": 2,
+            },
+            "battlefield": {
+                "side": 7,
+                "tiles": tuple(tuple(row) for row in grid),
+                "zones": (),
+            },
+        },
+        "action_mask": {"path": [0, 1, 1, 0, 0, 0, 0] + [0] * (1555 - 7), "target": [0]},
+    }
+
+    step = Agent()._step_toward(observation, {"q": 4, "r": 2})
+
+    assert step == 2
