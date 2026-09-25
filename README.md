@@ -1,3 +1,6 @@
+##AI use and plan
+Used AI to correct issues while attempting to run last season's agents as this and fixed an issue where the swords wouldn't cross around the middle river.
+
 # Skirmish at Crane Reach agent
 
 Edit `agent.py` to build one unit's behavior for Skirmish at Crane Reach. Every unit on a side runs a separate instance of the same `Agent` class, so they do not share state or variables. `sandbox/` is provided code: do not edit it.
