@@ -1,4 +1,4 @@
-##AI use and plan
+## AI use and plan
 Used AI to correct issues while attempting to run last season's agents as this and fixed an issue where the swords wouldn't cross around the middle river.
 
 # Skirmish at Crane Reach agent
